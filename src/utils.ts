@@ -28,7 +28,7 @@ export const ethAuthority = new ethers.Wallet(
   ethRpc
 );
 
-export const ENV = process.env.NODE_ENV!;
+export const ENV = process.env.CHAIN_ENV!;
 
 export const GAMBULLS_POLYGON_CONTRACT = process.env.GAMBULLS_POLYGON_CONTRACT!;
 export const GAMBULLS_ETH_CONTRACT = process.env.GAMBULLS_ETH_CONTRACT!;

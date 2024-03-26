@@ -14,7 +14,7 @@ export async function getWalletStakedNfts(req: Request, res: Response) {
 
     const alchemy = new Alchemy({
       network:
-        process.env.NODE_ENV === "development"
+        process.env.CHAIN_ENV === "development"
           ? Network.ETH_SEPOLIA
           : Network.ETH_MAINNET,
       apiKey: process.env.ALCHEMY_KEY,
