@@ -1,0 +1,80 @@
+info: Starting migration... {"timestamp":"2024-03-03T23:50:28.935Z"}
+info: Starting migration... {"timestamp":"2024-03-03T23:50:57.527Z"}
+info: Starting migration... {"timestamp":"2024-03-03T23:52:39.310Z"}
+info: Starting migration... {"timestamp":"2024-03-03T23:55:44.087Z"}
+info: Starting migration... {"timestamp":"2024-03-03T23:56:48.136Z"}
+info: Starting migration... {"timestamp":"2024-03-03T23:57:30.128Z"}
+info: Starting migration... {"timestamp":"2024-03-03T23:57:58.473Z"}
+info: Starting migration... {"timestamp":"2024-03-03T23:59:21.332Z"}
+info: Starting migration... {"timestamp":"2024-03-04T00:01:18.895Z"}
+info: Starting migration... {"timestamp":"2024-03-04T00:06:25.647Z"}
+info: Starting migration... {"timestamp":"2024-03-04T00:06:56.768Z"}
+info: Starting migration... {"timestamp":"2024-03-04T00:07:36.177Z"}
+info: Starting migration... {"timestamp":"2024-03-04T00:08:12.080Z"}
+info: Starting migration... {"timestamp":"2024-03-04T00:08:29.043Z"}
+info: Starting migration... {"timestamp":"2024-03-04T00:09:17.338Z"}
+info: Starting migration... {"timestamp":"2024-03-04T00:10:10.643Z"}
+info: Starting migration... {"timestamp":"2024-03-04T00:12:02.250Z"}
+info: Starting migration... {"timestamp":"2024-03-04T00:13:02.302Z"}
+info: Starting migration... {"timestamp":"2024-03-04T00:13:33.569Z"}
+info: Starting migration... {"timestamp":"2024-03-04T00:14:27.187Z"}
+info: Starting migration... {"timestamp":"2024-03-04T00:16:04.815Z"}
+info: Starting migration... {"timestamp":"2024-03-04T00:17:51.660Z"}
+info: Starting migration... {"timestamp":"2024-03-04T00:25:51.792Z"}
+info: Starting migration... {"timestamp":"2024-03-04T00:26:37.654Z"}
+info: Starting migration... {"timestamp":"2024-03-04T00:30:17.288Z"}
+info: Starting migration... {"timestamp":"2024-03-04T00:31:20.280Z"}
+info: Starting migration... {"timestamp":"2024-03-04T00:32:21.590Z"}
+info: Starting migration... {"timestamp":"2024-03-04T00:37:05.647Z"}
+info: Starting migration... {"timestamp":"2024-03-04T00:38:28.163Z"}
+info: Starting migration... {"timestamp":"2024-03-04T00:42:40.512Z"}
+info: Starting migration... {"timestamp":"2024-03-04T00:51:15.588Z"}
+info: Starting migration... {"timestamp":"2024-03-04T00:58:08.087Z"}
+info: Sent polygon nfts!... {"timestamp":"2024-03-04T00:58:17.152Z"}
+info: Finsihed bridge!... {"timestamp":"2024-03-04T01:08:53.241Z"}
+info: Starting migration... {"timestamp":"2024-03-04T01:13:50.821Z"}
+info: Sent polygon nfts!... {"timestamp":"2024-03-04T01:14:21.663Z"}
+info: Finsihed bridge!... {"timestamp":"2024-03-04T01:14:29.098Z"}
+info: Starting migration... {"timestamp":"2024-03-05T13:21:55.266Z"}
+info: Sent polygon nfts!... {"timestamp":"2024-03-05T13:22:44.925Z"}
+info: Finsihed bridge!... {"timestamp":"2024-03-05T13:22:50.717Z"}
+info: Starting migration... {"timestamp":"2024-03-24T23:03:52.934Z"}
+info: Starting migration... {"timestamp":"2024-03-24T23:04:40.821Z"}
+info: Sent polygon nfts!... {"timestamp":"2024-03-24T23:04:45.712Z"}
+info: Starting migration... {"timestamp":"2024-03-24T23:07:54.552Z"}
+info: Starting migration... {"timestamp":"2024-03-24T23:08:38.169Z"}
+info: Sent polygon nfts!... {"timestamp":"2024-03-24T23:08:44.242Z"}
+info: Starting migration... {"timestamp":"2024-03-24T23:09:41.963Z"}
+info: Sent polygon nfts!... {"timestamp":"2024-03-24T23:09:52.064Z"}
+info: Finsihed bridge!... {"timestamp":"2024-03-24T23:16:49.820Z"}
+info: Starting migration... {"timestamp":"2024-03-25T22:13:24.453Z"}
+info: Starting migration... {"timestamp":"2024-03-25T22:13:44.348Z"}
+info: Picked: 4c6e4c7a132e77ce08fde421b03cade00762d6b0dc5c644820e916f9cc7ab666 {"timestamp":"2024-03-25T22:13:44.353Z"}
+info: Starting migration... {"timestamp":"2024-03-25T22:23:32.472Z"}
+info: Picked: 4c6e4c7a132e77ce08fde421b03cade00762d6b0dc5c644820e916f9cc7ab666 {"timestamp":"2024-03-25T22:23:32.476Z"}
+info: Sent polygon nfts!... {"timestamp":"2024-03-25T22:23:38.561Z"}
+info: Picked: 4c6e4c7a132e77ce08fde421b03cade00762d6b0dc5c644820e916f9cc7ab666 {"timestamp":"2024-03-25T22:23:38.575Z"}
+info: Picked: 4c6e4c7a132e77ce08fde421b03cade00762d6b0dc5c644820e916f9cc7ab666 {"timestamp":"2024-03-25T22:26:20.800Z"}
+info: Finsihed bridge!... {"timestamp":"2024-03-25T22:26:50.520Z"}
+info: Starting migration... {"timestamp":"2024-03-25T23:36:39.093Z"}
+info: Picked: 4c6e4c7a132e77ce08fde421b03cade00762d6b0dc5c644820e916f9cc7ab666 {"timestamp":"2024-03-25T23:36:39.100Z"}
+info: Starting migration... {"timestamp":"2024-03-25T23:37:29.671Z"}
+info: Picked: a9d661f6ced9c2668636bd30298b2cbe52c79f7ce4c7259495284ec556692c63 {"timestamp":"2024-03-25T23:37:29.672Z"}
+info: Starting migration... {"timestamp":"2024-03-25T23:41:57.021Z"}
+info: Picked: 80be7cc6d5eca3932cbc4003ee4875c83c49d46bbb47a217e1630daf7f733090 {"timestamp":"2024-03-25T23:41:57.022Z"}
+info: Sent polygon nfts!... {"timestamp":"2024-03-25T23:42:03.105Z"}
+info: Picked: a74534848f0d4ca22e727a7d486d79cc3e00f4f0b83baf34745676b5a486acc5 {"timestamp":"2024-03-25T23:42:03.132Z"}
+info: Picked: 4c6e4c7a132e77ce08fde421b03cade00762d6b0dc5c644820e916f9cc7ab666 {"timestamp":"2024-03-25T23:43:07.393Z"}
+info: Finsihed bridge!... {"timestamp":"2024-03-25T23:43:12.351Z"}
+info: Starting migration... {"timestamp":"2024-03-25T23:50:10.090Z"}
+info: Picked: 4c6e4c7a132e77ce08fde421b03cade00762d6b0dc5c644820e916f9cc7ab666 {"timestamp":"2024-03-25T23:50:10.095Z"}
+info: Sent polygon nfts!... {"timestamp":"2024-03-25T23:50:15.899Z"}
+info: Picked: a9d661f6ced9c2668636bd30298b2cbe52c79f7ce4c7259495284ec556692c63 {"timestamp":"2024-03-25T23:50:15.907Z"}
+info: Picked: 80be7cc6d5eca3932cbc4003ee4875c83c49d46bbb47a217e1630daf7f733090 {"timestamp":"2024-03-25T23:51:02.283Z"}
+info: Finsihed bridge!... {"timestamp":"2024-03-25T23:51:27.538Z"}
+info: Starting migration... {"timestamp":"2024-03-26T00:18:56.946Z"}
+info: Picked: 4c6e4c7a132e77ce08fde421b03cade00762d6b0dc5c644820e916f9cc7ab666 {"timestamp":"2024-03-26T00:18:56.953Z"}
+info: Sent polygon nfts!... {"timestamp":"2024-03-26T00:19:03.139Z"}
+info: Picked: a9d661f6ced9c2668636bd30298b2cbe52c79f7ce4c7259495284ec556692c63 {"timestamp":"2024-03-26T00:19:03.172Z"}
+info: Picked: 4c6e4c7a132e77ce08fde421b03cade00762d6b0dc5c644820e916f9cc7ab666 {"timestamp":"2024-03-26T00:20:01.457Z"}
+info: Finsihed bridge!... {"timestamp":"2024-03-26T00:20:14.745Z"}
