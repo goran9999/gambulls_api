@@ -14,6 +14,6 @@ connectToDb();
 app.use("/transaction", TransactionRouter);
 app.use("/staking", StakingRouter);
 
-app.listen(3009, () => {
+app.listen(3000, "0.0.0.0", () => {
   console.log("Listening on port 3009...");
 });
