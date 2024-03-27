@@ -78,3 +78,9 @@ info: Sent polygon nfts!... {"timestamp":"2024-03-26T00:19:03.139Z"}
 info: Picked: a9d661f6ced9c2668636bd30298b2cbe52c79f7ce4c7259495284ec556692c63 {"timestamp":"2024-03-26T00:19:03.172Z"}
 info: Picked: 4c6e4c7a132e77ce08fde421b03cade00762d6b0dc5c644820e916f9cc7ab666 {"timestamp":"2024-03-26T00:20:01.457Z"}
 info: Finsihed bridge!... {"timestamp":"2024-03-26T00:20:14.745Z"}
+info: Starting migration... {"timestamp":"2024-03-27T20:58:39.797Z"}
+info: Picked: 4c6e4c7a132e77ce08fde421b03cade00762d6b0dc5c644820e916f9cc7ab666 {"timestamp":"2024-03-27T20:58:39.799Z"}
+info: Sent polygon nfts!... {"timestamp":"2024-03-27T20:58:46.544Z"}
+info: Picked: a9d661f6ced9c2668636bd30298b2cbe52c79f7ce4c7259495284ec556692c63 {"timestamp":"2024-03-27T20:58:46.556Z"}
+info: Picked: 4c6e4c7a132e77ce08fde421b03cade00762d6b0dc5c644820e916f9cc7ab666 {"timestamp":"2024-03-27T21:02:27.159Z"}
+info: Finsihed bridge!... {"timestamp":"2024-03-27T21:02:36.683Z"}

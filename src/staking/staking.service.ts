@@ -114,3 +114,40 @@ export async function stakeGambulls(req: Request, res: Response) {
     return res.status(500).json({ message: error.message });
   }
 }
+
+export async function unstakeNfts(req: Request, res: Response) {
+  try {
+    const { wallet, tokenIds } = req.body;
+    if (!wallet || !tokenIds) {
+      return res.status(400).json({ message: "Invalid body!" });
+    }
+
+    const walletStakings = await gamubllsContract.getStakedNfts(wallet);
+
+    for (const tokenId of tokenIds) {
+      if (
+        !walletStakings.find(
+          (w: any) => Number(w.tokenId) === tokenId && w.isStaked
+        )
+      ) {
+        return res
+          .status(400)
+          .json({ message: "You are not owner of some of NFTs!" });
+      }
+    }
+
+    const tx = gamubllsContract.interface.encodeFunctionData("withdraw", [
+      tokenIds,
+    ]);
+
+    return res.status(200).json({
+      tx: {
+        from: wallet,
+        to: gamubllsContract.target,
+        data: tx,
+      },
+    });
+  } catch (error: any) {
+    return res.status(500).json({ message: error.message });
+  }
+}
