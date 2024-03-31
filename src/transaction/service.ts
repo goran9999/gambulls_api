@@ -21,6 +21,8 @@ import { Alchemy, Network } from "alchemy-sdk";
 import logger from "../logger";
 import { Authority } from "./authorities";
 
+const MAX_GAS = 35; //in gwei
+
 const GenerateSentPolygonSchema = z.object({
   tokenIds: z.array(z.number()),
   wallet: z.string(),
@@ -82,6 +84,11 @@ export async function submitPolygonTransferTransaction(
       return res.status(400).json({ message: "Invalid body!" });
     }
 
+    const gas = await getGasPrice();
+
+    if (gas > MAX_GAS) {
+      return res.status(400).json({ message: "Gas too high!" });
+    }
     const { tokenIds, wallet } = parsedData.data;
 
     const existingTransfers = await TransferNfts.find({
@@ -223,6 +230,13 @@ export async function retryMint(req: Request, res: Response) {
     if (!wallet) {
       return res.status(400).json({ message: "Missing wallet address!" });
     }
+
+    const gas = await getGasPrice();
+
+    if (gas > MAX_GAS) {
+      return res.status(400).json({ message: "Gas too high!" });
+    }
+
     const claimable = await TransferNfts.find({
       wallet: wallet,
       status: TransactionStatus.TransferredPolygon,
@@ -266,4 +280,15 @@ export async function retryMint(req: Request, res: Response) {
     console.log(error);
     return res.status(500).json({ message: error.message });
   }
+}
+
+async function getGasPrice() {
+  const gas = (await ethRpc.getFeeData()).gasPrice;
+
+  if (gas) {
+    const gwei = ethers.formatUnits(gas, "gwei");
+    return gwei;
+  }
+
+  return 0;
 }
