@@ -172,7 +172,8 @@ export async function submitPolygonTransferTransaction(
 
     const mintTx = await ethAuthority.sendTransaction(mintTxRaw);
     const mintReceipt = await mintTx.wait();
-    logger.info("Finsihed bridge!...");
+    logger.info("Finsihed bridge: ");
+    logger.info(mintReceipt?.hash);
 
     existingTransfer.status = TransactionStatus.Finished;
     existingTransfer.etherumMintHash = mintReceipt?.hash ?? "";
