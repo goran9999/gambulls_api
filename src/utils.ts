@@ -17,16 +17,9 @@ export const authorities: string[] = JSON.parse(
   process.env.AUTHORITIES!
 ) as string[];
 
-export const polygonRpc = new ethers.JsonRpcProvider(
-  "https://rpc.ankr.com/polygon_mumbai"
-);
+export const polygonRpc = new ethers.JsonRpcProvider(process.env.POLYGON_RPC!);
 
 export const ethRpc = new ethers.JsonRpcProvider(process.env.ETH_RPC!);
-
-export const ethAuthority = new ethers.Wallet(
-  "4c6e4c7a132e77ce08fde421b03cade00762d6b0dc5c644820e916f9cc7ab666",
-  ethRpc
-);
 
 export const ENV = process.env.CHAIN_ENV!;
 
