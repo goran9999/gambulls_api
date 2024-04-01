@@ -23,9 +23,11 @@ export const ethRpc = new ethers.JsonRpcProvider(process.env.ETH_RPC!);
 
 export const ENV = process.env.CHAIN_ENV!;
 
-export const GAMBULLS_POLYGON_CONTRACT = process.env.GAMBULLS_POLYGON_CONTRACT!;
-export const GAMBULLS_ETH_CONTRACT = process.env.GAMBULLS_ETH_CONTRACT!;
-export const BULK_SENDER = process.env.BULK_SENDER_CONTRACT!;
+export const GAMBULLS_POLYGON_CONTRACT =
+  "0xc1a5f386e3b2d3cb280191fcd11e76c41117197d";
+export const GAMBULLS_ETH_CONTRACT =
+  "0x8A2edD3686Da98A0d2C92db4273c047039E5A6b2";
+export const BULK_SENDER = "0x8A2edD3686Da98A0d2C92db4273c047039E5A6b2";
 
 export const erc721Contract = new ethers.Contract(
   GAMBULLS_POLYGON_CONTRACT,
