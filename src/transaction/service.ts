@@ -245,11 +245,15 @@ export async function retryMint(req: Request, res: Response) {
       status: TransactionStatus.TransferredPolygon,
     });
 
-    const tokenIds = claimable.map((c) => c.tokenIds).flat();
+    let tokenIds = await bulkSenderContract.getPolygonTransfers(wallet);
 
-    const tokenUris = await Promise.all(
-      tokenIds.map(async (id: number) => await erc721Contract.tokenURI(id))
-    );
+    const stakedNfts = await gamubllsContract.getStakedNfts(wallet);
+
+    tokenIds = tokenIds
+      .filter(
+        (w: any) => !stakedNfts.some((s: any) => Number(s[1]) === Number(w))
+      )
+      .map((w: any) => Number(w));
 
     const mintData = gamubllsContract.interface.encodeFunctionData("mintNfts", [
       wallet,
