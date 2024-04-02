@@ -10,7 +10,9 @@ export async function getWalletStakedNfts(req: Request, res: Response) {
     if (!wallet) {
       return res.status(400).json({ message: "Missing wallet!" });
     }
-    const walletStakedNfts = await gamubllsContract.getStakedNfts(wallet);
+    const walletStakedNfts = (
+      await gamubllsContract.getStakedNfts(wallet)
+    ).filter((w: any) => w[2]);
 
     const alchemy = new Alchemy({
       network:
@@ -22,41 +24,27 @@ export async function getWalletStakedNfts(req: Request, res: Response) {
 
     const nfts: any[] = [];
 
-    const ids: Set<number> = new Set();
-    await Promise.all(
-      walletStakedNfts
-        .filter((wns: any) => wns[2])
-        .map(async (wns: any) => {
-          try {
-            const nft = await alchemy.nft.getNftMetadata(
-              gamubllsContract.target.toString(),
-              wns[1]
-            );
-            ids.add(Number(wns[1]));
-            if (!nfts.find((n) => n.id == Number(wns[1]))) {
-              nfts.push({
-                id: Number(wns[1]),
-                staked: true,
-                image: nft.image.originalUrl,
-                mint: wns[1].toString(),
-              });
-            }
-          } catch (error) {
-            console.log(error);
-          }
-        })
-    );
+    for (const wns of walletStakedNfts) {
+      try {
+        const nft = await alchemy.nft.getNftMetadata(
+          gamubllsContract.target.toString(),
+          wns[1]
+        );
 
-    const finalNfts: any[] = [];
-
-    Array.from(ids).forEach((id) => {
-      const found = nfts.find((n) => n.id === id);
-      if (found) {
-        finalNfts.push(found);
+        if (!nfts.find((n) => n.id == Number(wns[1]))) {
+          nfts.push({
+            id: Number(wns[1]),
+            staked: true,
+            image: nft.image.originalUrl,
+            mint: wns[1].toString(),
+          });
+        }
+      } catch (error) {
+        console.log(error);
       }
-    });
+    }
 
-    return res.status(200).json({ message: "Success", stakedNfts: finalNfts });
+    return res.status(200).json({ message: "Success", stakedNfts: nfts });
   } catch (error: any) {
     console.log(error);
     return res.status(500).json({ message: error.message });
