@@ -153,7 +153,7 @@ export async function submitPolygonTransferTransaction(
     existingTransfer.status = TransactionStatus.TransferredPolygon;
     existingTransfer.polygonTransferHash = sendReceipt?.hash ?? "";
     existingTransfer.tokenIds = tokenIds;
-    console.log(existingTransfer, "EEEE");
+    console.log(existingTransfer, "EEEE", tokenIds);
     await existingTransfer.save();
 
     const mintData = gamubllsContract.interface.encodeFunctionData("mintNfts", [
