@@ -91,12 +91,12 @@ export async function submitPolygonTransferTransaction(
     }
     const { tokenIds, wallet } = parsedData.data;
 
-    const existingTransfers = await TransferNfts.find({
+    const previousTransfers = await TransferNfts.find({
       tokenIds: { $in: tokenIds },
       status: { $ne: TransactionStatus.Requested },
     });
 
-    if (existingTransfers.length > 0) {
+    if (previousTransfers.length > 0) {
       return res
         .status(400)
         .json({ message: "You already bridged some of nfts!" });
@@ -151,8 +151,9 @@ export async function submitPolygonTransferTransaction(
     logger.info("Sent polygon nfts!...");
 
     existingTransfer.status = TransactionStatus.TransferredPolygon;
-    existingTransfer.tokenIds = tokenIds;
     existingTransfer.polygonTransferHash = sendReceipt?.hash ?? "";
+    existingTransfer.tokenIds = tokenIds;
+    console.log(existingTransfer, "EEEE");
     await existingTransfer.save();
 
     const mintData = gamubllsContract.interface.encodeFunctionData("mintNfts", [
@@ -189,36 +190,29 @@ export async function submitPolygonTransferTransaction(
 export async function getWalletClaimableNfts(req: Request, res: Response) {
   const wallet = req.params["wallet"];
 
-  try {
-    if (!wallet) {
-      return res.status(400).json({ message: "Missing wallet!" });
-    }
+  if (!wallet) {
+    return res.status(400).json({ message: "Missing wallet!" });
+  }
 
-    let walletBridgedNfts = await bulkSenderContract.getPolygonTransfers(
-      wallet
-    );
+  const claimable = await TransferNfts.find({
+    wallet: wallet,
+    status: TransactionStatus.TransferredPolygon,
+  });
 
-    const stakedNfts = await gamubllsContract.getStakedNfts(wallet);
-
-    walletBridgedNfts = walletBridgedNfts
-      .filter(
-        (w: any) => !stakedNfts.some((s: any) => Number(s[1]) === Number(w))
-      )
-      .map((w: any) => Number(w));
-
-    const alchemy = new Alchemy({
-      apiKey: "k_ZfWtgIcfTpWMuaWh5tFCgv2yAgvvRm",
-      network:
-        ENV === "development" ? Network.MATIC_MUMBAI : Network.MATIC_MAINNET,
-    });
-    const nfts: { id: string; name: string; image: string; mint: string }[] =
-      [];
-    for (let tokenId of walletBridgedNfts) {
+  const alchemy = new Alchemy({
+    apiKey: "k_ZfWtgIcfTpWMuaWh5tFCgv2yAgvvRm",
+    network:
+      ENV === "development" ? Network.MATIC_MUMBAI : Network.MATIC_MAINNET,
+  });
+  const nfts: { id: string; name: string; image: string; mint: string }[] = [];
+  for (let c of claimable) {
+    for (let tokenId of c.tokenIds) {
       try {
         const nftData = await alchemy.nft.getNftMetadata(
           GAMBULLS_POLYGON_CONTRACT,
           Number(tokenId)
         );
+
         console.log(nftData.name);
         nfts.push({
           id: tokenId.toString(),
@@ -228,10 +222,9 @@ export async function getWalletClaimableNfts(req: Request, res: Response) {
         });
       } catch (error) {}
     }
-    return res.status(200).json({ data: [] });
-  } catch (error) {
-    return res.status(400).json({ message: "Failed. Please try again!" });
   }
+
+  return res.status(200).json({ data: nfts });
 }
 
 export async function retryMint(req: Request, res: Response) {
@@ -252,17 +245,7 @@ export async function retryMint(req: Request, res: Response) {
       status: TransactionStatus.TransferredPolygon,
     });
 
-    let tokenIds = await bulkSenderContract.getPolygonTransfers(wallet);
-
-    tokenIds = [];
-
-    const stakedNfts = await gamubllsContract.getStakedNfts(wallet);
-
-    tokenIds = tokenIds
-      .filter(
-        (w: any) => !stakedNfts.some((s: any) => Number(s[1]) === Number(w))
-      )
-      .map((w: any) => Number(w));
+    const tokenIds = claimable.map((c) => c.tokenIds).flat();
 
     const mintData = gamubllsContract.interface.encodeFunctionData("mintNfts", [
       wallet,
