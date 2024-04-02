@@ -254,6 +254,8 @@ export async function retryMint(req: Request, res: Response) {
 
     let tokenIds = await bulkSenderContract.getPolygonTransfers(wallet);
 
+    tokenIds = [];
+
     const stakedNfts = await gamubllsContract.getStakedNfts(wallet);
 
     tokenIds = tokenIds
