@@ -21,6 +21,8 @@ export async function getWalletStakedNfts(req: Request, res: Response) {
     });
 
     const nfts: any[] = [];
+
+    const ids: Set<number> = new Set();
     await Promise.all(
       walletStakedNfts
         .filter((wns: any) => wns[2])
@@ -30,6 +32,7 @@ export async function getWalletStakedNfts(req: Request, res: Response) {
               gamubllsContract.target.toString(),
               wns[1]
             );
+            ids.add(Number(wns[1]));
             if (!nfts.find((n) => n.id == Number(wns[1]))) {
               nfts.push({
                 id: Number(wns[1]),
@@ -44,7 +47,16 @@ export async function getWalletStakedNfts(req: Request, res: Response) {
         })
     );
 
-    return res.status(200).json({ message: "Success", stakedNfts: nfts });
+    const finalNfts: any[] = [];
+
+    Array.from(ids).forEach((id) => {
+      const found = nfts.find((n) => n.id === id);
+      if (found) {
+        finalNfts.push(found);
+      }
+    });
+
+    return res.status(200).json({ message: "Success", stakedNfts: finalNfts });
   } catch (error: any) {
     console.log(error);
     return res.status(500).json({ message: error.message });
