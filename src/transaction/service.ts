@@ -189,43 +189,49 @@ export async function submitPolygonTransferTransaction(
 export async function getWalletClaimableNfts(req: Request, res: Response) {
   const wallet = req.params["wallet"];
 
-  if (!wallet) {
-    return res.status(400).json({ message: "Missing wallet!" });
+  try {
+    if (!wallet) {
+      return res.status(400).json({ message: "Missing wallet!" });
+    }
+
+    let walletBridgedNfts = await bulkSenderContract.getPolygonTransfers(
+      wallet
+    );
+
+    const stakedNfts = await gamubllsContract.getStakedNfts(wallet);
+
+    walletBridgedNfts = walletBridgedNfts
+      .filter(
+        (w: any) => !stakedNfts.some((s: any) => Number(s[1]) === Number(w))
+      )
+      .map((w: any) => Number(w));
+
+    const alchemy = new Alchemy({
+      apiKey: "k_ZfWtgIcfTpWMuaWh5tFCgv2yAgvvRm",
+      network:
+        ENV === "development" ? Network.MATIC_MUMBAI : Network.MATIC_MAINNET,
+    });
+    const nfts: { id: string; name: string; image: string; mint: string }[] =
+      [];
+    for (let tokenId of walletBridgedNfts) {
+      try {
+        const nftData = await alchemy.nft.getNftMetadata(
+          GAMBULLS_POLYGON_CONTRACT,
+          Number(tokenId)
+        );
+        console.log(nftData.name);
+        nfts.push({
+          id: tokenId.toString(),
+          image: nftData.image.originalUrl ?? "",
+          name: nftData.name ?? "",
+          mint: tokenId.toString(),
+        });
+      } catch (error) {}
+    }
+    return res.status(200).json({ data: nfts });
+  } catch (error) {
+    return res.status(400).json({ message: "Failed. Please try again!" });
   }
-
-  let walletBridgedNfts = await bulkSenderContract.getPolygonTransfers(wallet);
-
-  const stakedNfts = await gamubllsContract.getStakedNfts(wallet);
-
-  walletBridgedNfts = walletBridgedNfts
-    .filter(
-      (w: any) => !stakedNfts.some((s: any) => Number(s[1]) === Number(w))
-    )
-    .map((w: any) => Number(w));
-
-  const alchemy = new Alchemy({
-    apiKey: "k_ZfWtgIcfTpWMuaWh5tFCgv2yAgvvRm",
-    network:
-      ENV === "development" ? Network.MATIC_MUMBAI : Network.MATIC_MAINNET,
-  });
-  const nfts: { id: string; name: string; image: string; mint: string }[] = [];
-  for (let tokenId of walletBridgedNfts) {
-    try {
-      const nftData = await alchemy.nft.getNftMetadata(
-        GAMBULLS_POLYGON_CONTRACT,
-        Number(tokenId)
-      );
-      console.log(nftData.name);
-      nfts.push({
-        id: tokenId.toString(),
-        image: nftData.image.originalUrl ?? "",
-        name: nftData.name ?? "",
-        mint: tokenId.toString(),
-      });
-    } catch (error) {}
-  }
-
-  return res.status(200).json({ data: nfts });
 }
 
 export async function retryMint(req: Request, res: Response) {
