@@ -151,6 +151,7 @@ export async function submitPolygonTransferTransaction(
     logger.info("Sent polygon nfts!...");
 
     existingTransfer.status = TransactionStatus.TransferredPolygon;
+    existingTransfer.tokenIds = tokenIds;
     existingTransfer.polygonTransferHash = sendReceipt?.hash ?? "";
     await existingTransfer.save();
 
