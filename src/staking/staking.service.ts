@@ -20,6 +20,7 @@ export async function getWalletStakedNfts(req: Request, res: Response) {
       apiKey: process.env.ALCHEMY_KEY,
     });
 
+    const nfts: any[] = [];
     const stakedNftInfo = await Promise.all(
       walletStakedNfts
         .filter((wns: any) => wns[2])
@@ -29,21 +30,21 @@ export async function getWalletStakedNfts(req: Request, res: Response) {
               gamubllsContract.target.toString(),
               wns[1]
             );
-            return {
-              id: Number(wns[1]),
-              staked: true,
-              image: nft.image.originalUrl,
-              mint: wns[1].toString(),
-            };
+            if (!nfts.some((n) => n.id === Number(wns[1]))) {
+              nfts.push({
+                id: Number(wns[1]),
+                staked: true,
+                image: nft.image.originalUrl,
+                mint: wns[1].toString(),
+              });
+            }
           } catch (error) {
             console.log(error);
           }
         })
     );
 
-    return res
-      .status(200)
-      .json({ message: "Success", stakedNfts: stakedNftInfo });
+    return res.status(200).json({ message: "Success", stakedNfts: nfts });
   } catch (error: any) {
     console.log(error);
     return res.status(500).json({ message: error.message });
