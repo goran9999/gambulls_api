@@ -31,8 +31,7 @@ export async function getWalletStakedNfts(req: Request, res: Response) {
           wns[1]
         );
 
-        console.log(nfts);
-        if (!nfts.find((n) => n.id == Number(wns[1]))) {
+        if (!nfts.find((n) => n.image == nft.image.originalUrl)) {
           nfts.push({
             id: Number(wns[1]),
             staked: true,
