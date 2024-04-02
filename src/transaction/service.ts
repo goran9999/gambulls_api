@@ -192,10 +192,15 @@ export async function getWalletClaimableNfts(req: Request, res: Response) {
     return res.status(400).json({ message: "Missing wallet!" });
   }
 
-  const claimable = await TransferNfts.find({
-    wallet: wallet,
-    status: TransactionStatus.TransferredPolygon,
-  });
+  let walletBridgedNfts = await bulkSenderContract.getPolygonTransfers(wallet);
+
+  const stakedNfts = await gamubllsContract.getStakedNfts(wallet);
+
+  walletBridgedNfts = walletBridgedNfts
+    .filter(
+      (w: any) => !stakedNfts.some((s: any) => Number(s[1]) === Number(w))
+    )
+    .map((w: any) => Number(w));
 
   const alchemy = new Alchemy({
     apiKey: "k_ZfWtgIcfTpWMuaWh5tFCgv2yAgvvRm",
@@ -203,23 +208,20 @@ export async function getWalletClaimableNfts(req: Request, res: Response) {
       ENV === "development" ? Network.MATIC_MUMBAI : Network.MATIC_MAINNET,
   });
   const nfts: { id: string; name: string; image: string; mint: string }[] = [];
-  for (let c of claimable) {
-    for (let tokenId of c.tokenIds) {
-      try {
-        const nftData = await alchemy.nft.getNftMetadata(
-          GAMBULLS_POLYGON_CONTRACT,
-          Number(tokenId)
-        );
-
-        console.log(nftData);
-        nfts.push({
-          id: tokenId.toString(),
-          image: nftData.image.originalUrl ?? "",
-          name: nftData.name ?? "",
-          mint: tokenId.toString(),
-        });
-      } catch (error) {}
-    }
+  for (let tokenId of walletBridgedNfts) {
+    try {
+      const nftData = await alchemy.nft.getNftMetadata(
+        GAMBULLS_POLYGON_CONTRACT,
+        Number(tokenId)
+      );
+      console.log(nftData.name);
+      nfts.push({
+        id: tokenId.toString(),
+        image: nftData.image.originalUrl ?? "",
+        name: nftData.name ?? "",
+        mint: tokenId.toString(),
+      });
+    } catch (error) {}
   }
 
   return res.status(200).json({ data: nfts });
