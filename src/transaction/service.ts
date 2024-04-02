@@ -149,7 +149,7 @@ export async function submitPolygonTransferTransaction(
 
     const sendReceipt = await tx.wait();
 
-    logger.info("Sent polygon nfts!...");
+    logger.info("Sent polygon nfts!..." + sendReceipt?.hash);
 
     existingTransfer.status = TransactionStatus.TransferredPolygon;
     existingTransfer.polygonTransferHash = sendReceipt?.hash ?? "";
