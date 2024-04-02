@@ -91,6 +91,7 @@ export async function submitPolygonTransferTransaction(
     }
     const { tokenIds, wallet } = parsedData.data;
 
+    logger.info(tokenIds + " token ids");
     const previousTransfers = await TransferNfts.find({
       tokenIds: { $in: tokenIds },
       status: { $ne: TransactionStatus.Requested },
