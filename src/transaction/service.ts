@@ -91,6 +91,10 @@ export async function submitPolygonTransferTransaction(
     }
     const { tokenIds, wallet } = parsedData.data;
 
+    if (tokenIds.length === 0) {
+      return res.status(400).json({ message: "Missing NFTs!" });
+    }
+
     logger.info(tokenIds + " token ids");
     const previousTransfers = await TransferNfts.find({
       tokenIds: { $in: tokenIds },
