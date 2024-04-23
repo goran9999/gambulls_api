@@ -84,3 +84,25 @@ info: Sent polygon nfts!... {"timestamp":"2024-03-27T20:58:46.544Z"}
 info: Picked: a9d661f6ced9c2668636bd30298b2cbe52c79f7ce4c7259495284ec556692c63 {"timestamp":"2024-03-27T20:58:46.556Z"}
 info: Picked: 4c6e4c7a132e77ce08fde421b03cade00762d6b0dc5c644820e916f9cc7ab666 {"timestamp":"2024-03-27T21:02:27.159Z"}
 info: Finsihed bridge!... {"timestamp":"2024-03-27T21:02:36.683Z"}
+info: Cron execution... {"timestamp":"2024-04-23T16:38:00.011Z"}
+info: Cron found 2,5,6,5,8,5,3,2,7,1,1,1,1,3,2,1,1,1,5,3,1,1,19,13,1,1,2,2,1,21,8,2,8,1,1,50,12,3,3,2,4,1,6,9,2,50,15,1,5,7,12,1,31,2,3,20,21,1,1,1,2,1,134,5,3,4,0,47,20,1,2,1,1,4,1,6,1,2,1,5,6,9,6,2,2,4,5,4,47,100,2,4,4,4,13,1,5,1,10,96,40,8,2,7,47,4,26,11,29,5,5,20,1,3,1,1,2,2,4,4,4,1,1,1,38,5,2,1,20,1,1,8,2,1,1,5,7,1,4,1,1,4,2,5,50,1,2,1,1,6,100,36,1,2,3,6,6,5,1,1,32,11,7,3,9,1,100,1,44,2,5,1,1,5,8,2,46,33,4,102,2,4,1,5,1,1,4,2,6,4,1,11,5,1,1,2,40,59,35,2,1,6,3,1,3,2,1,1,0,14,2,4,62,3,2,1,1,1,1,1,1,41,3,1,10,2,1,1,2,12,1,5,2,6,2,2,1,1,5,1,0,2,1,2,1,50,7,1,5,10,10,1,1,2,2,2,1,4,1,3,4,2,3,1,8,2,2,1,2,1,3,1,1,3,20,1,1,1,5,7,17,1,1,2,2,3,2,1,1,6,2,1,1,5,3,7,2,1,3,1,1,1,1,1,5,1,2,4,1,30,1,1,2,1,2,1,17,1,10,1,1,2,2,2,2,3,1,1,9,1,1,2,4,2,1,1,3,2,2,10,6,2,1,0,2,1,1,2,1,1,2,10,5,5,6,1,1,1,1,6,1,1,1,32,1,1,1,1,1,4,3,3,2,18,1,1,1,1,3,1,1,2,1,2,1,1,1,2,0,2,8,2,2,1,7,1,2,3,1,3,10,1,5,1,1,1,2,1,0,1,2,6,1,1 staked nfts! {"timestamp":"2024-04-23T16:38:04.116Z"}
+info: Cron execution... {"timestamp":"2024-04-23T16:39:00.003Z"}
+info: Cron found 2931 staked nfts! {"timestamp":"2024-04-23T16:39:02.889Z"}
+info: Cron execution... {"timestamp":"2024-04-23T16:40:00.013Z"}
+info: Cron found 2931 staked nfts! {"timestamp":"2024-04-23T16:40:01.424Z"}
+info: Stored staking info! {"timestamp":"2024-04-23T16:40:01.424Z"}
+info: Cron execution... {"timestamp":"2024-04-23T16:41:00.005Z"}
+info: Cron found 2931 staked nfts! {"timestamp":"2024-04-23T16:41:01.496Z"}
+info: Stored staking info! {"timestamp":"2024-04-23T16:41:01.497Z"}
+info: Cron execution... {"timestamp":"2024-04-23T16:42:00.019Z"}
+info: Cron found 2931 staked nfts! {"timestamp":"2024-04-23T16:42:03.221Z"}
+info: Stored staking info! {"timestamp":"2024-04-23T16:42:03.221Z"}
+info: Cron execution... {"timestamp":"2024-04-23T16:44:00.023Z"}
+info: Cron found 2931 staked nfts! {"timestamp":"2024-04-23T16:44:01.575Z"}
+info: Stored staking info! {"timestamp":"2024-04-23T16:44:01.858Z"}
+info: Cron execution... {"timestamp":"2024-04-23T16:45:00.003Z"}
+info: Cron found 2931 staked nfts! {"timestamp":"2024-04-23T16:45:01.501Z"}
+info: Stored staking info! {"timestamp":"2024-04-23T16:45:01.682Z"}
+info: Cron execution... {"timestamp":"2024-04-23T16:47:00.003Z"}
+info: Cron found 2931 staked nfts! {"timestamp":"2024-04-23T16:47:01.434Z"}
+info: Stored staking info! {"timestamp":"2024-04-23T16:47:01.672Z"}

@@ -1,5 +1,6 @@
 import express from "express";
 import {
+  getStakedNfts,
   getWalletStakedNfts,
   stakeGambulls,
   unstakeBulls,
@@ -11,4 +12,5 @@ export const StakingRouter = express.Router();
 StakingRouter.post("/unstakeAll", unstakeBulls)
   .post("/unstake", unstakeNfts)
   .post("/stake", stakeGambulls)
+  .get("/staked", getStakedNfts)
   .get("/:wallet", getWalletStakedNfts);

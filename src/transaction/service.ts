@@ -293,7 +293,7 @@ async function getGasPrice() {
     const gwei = ethers.formatUnits(gas, "gwei");
 
     logger.info("Gwei gas: " + gwei);
-    return gwei;
+    return +gwei;
   }
 
   return 0;

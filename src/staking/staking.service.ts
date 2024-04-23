@@ -3,6 +3,8 @@ import { Request, Response } from "express";
 import axios from "axios";
 import { ethers } from "ethers";
 import { Alchemy, Network } from "alchemy-sdk";
+import { User } from "../db";
+import { createClient } from "redis";
 
 export async function getWalletStakedNfts(req: Request, res: Response) {
   try {
@@ -13,6 +15,8 @@ export async function getWalletStakedNfts(req: Request, res: Response) {
     const walletStakedNfts = (
       await gamubllsContract.getStakedNfts(wallet)
     ).filter((w: any) => w[2]);
+
+    await createUserIfNotExists(wallet);
 
     const alchemy = new Alchemy({
       network:
@@ -57,6 +61,8 @@ export async function unstakeBulls(req: Request, res: Response) {
 
     if (!wallet) return res.status(400).json({ message: "Missing wallet!" });
 
+    await createUserIfNotExists(wallet);
+
     const unstakeData =
       gamubllsContract.interface.encodeFunctionData("unstakeAll");
 
@@ -80,6 +86,8 @@ export async function stakeGambulls(req: Request, res: Response) {
 
     if (!tokenIds)
       return res.status(400).json({ message: "Missing token ids!" });
+
+    await createUserIfNotExists(wallet);
 
     const approve = gamubllsContract.interface.encodeFunctionData(
       "setApprovalForAll",
@@ -116,6 +124,27 @@ export async function stakeGambulls(req: Request, res: Response) {
   }
 }
 
+export async function getStakedNfts(_: Request, res: Response) {
+  try {
+    const client = await createClient({
+      url: process.env.REDIS_URL!,
+    }).connect();
+
+    const stakedNfts = await client.get("stakedNfts");
+
+    await client.disconnect();
+    if (stakedNfts) {
+      return res.status(200).json({ stakedNfts: +stakedNfts });
+    } else {
+      return res
+        .status(400)
+        .json({ message: "Failed to get staked NFTs!", success: false });
+    }
+  } catch (error: any) {
+    return res.status(500).json({ message: error.message, success: false });
+  }
+}
+
 export async function unstakeNfts(req: Request, res: Response) {
   try {
     const { wallet, tokenIds } = req.body;
@@ -124,6 +153,8 @@ export async function unstakeNfts(req: Request, res: Response) {
     }
 
     const walletStakings = await gamubllsContract.getStakedNfts(wallet);
+
+    await createUserIfNotExists(wallet);
 
     for (const tokenId of tokenIds) {
       if (
@@ -150,5 +181,18 @@ export async function unstakeNfts(req: Request, res: Response) {
     });
   } catch (error: any) {
     return res.status(500).json({ message: error.message });
+  }
+}
+
+export async function createUserIfNotExists(wallet: string) {
+  const user = await User.findOne({ wallet });
+
+  if (!user) {
+    const newUser = new User({
+      wallet,
+      createdAt: new Date(),
+    });
+
+    await newUser.save();
   }
 }
