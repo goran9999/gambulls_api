@@ -132,9 +132,13 @@ export async function getStakedNfts(_: Request, res: Response) {
 
     const stakedNfts = await client.get("stakedNfts");
 
+    const wallets = await client.get("wallets");
+
     await client.disconnect();
     if (stakedNfts) {
-      return res.status(200).json({ stakedNfts: +stakedNfts });
+      return res
+        .status(200)
+        .json({ stakedNfts: +stakedNfts, wallets: JSON.parse(wallets ?? "") });
     } else {
       return res
         .status(400)
