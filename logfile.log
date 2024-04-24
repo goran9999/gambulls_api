@@ -288,3 +288,6 @@ info: Cron found 2942 staked nfts! {"timestamp":"2024-04-24T04:09:47.223Z"}
 info: Stored staking info! {"timestamp":"2024-04-24T04:09:47.409Z"}
 info: Cron execution... {"timestamp":"2024-04-24T04:10:00.009Z"}
 info: Cron execution... {"timestamp":"2024-04-24T04:25:04.881Z"}
+info: Cron execution... {"timestamp":"2024-04-24T08:00:00.004Z"}
+info: Cron found 2943 staked nfts! {"timestamp":"2024-04-24T08:00:01.875Z"}
+info: Stored staking info! {"timestamp":"2024-04-24T08:00:02.380Z"}

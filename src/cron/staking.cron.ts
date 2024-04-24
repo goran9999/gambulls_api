@@ -21,7 +21,7 @@ export const stakingCron = new CronJob("*/10 * * * *", async () => {
       wallets.map(async (w) => {
         const stakedNfts = await gamubllsContract.getStakedNfts(w);
         const len = stakedNfts.filter((s: any) => s[2]).length;
-        if (len > 0) stakedWallets.add(w);
+        if (len > 0) stakedWallets.add({ wallet: w, stakedNfts: len });
 
         return len;
       })
