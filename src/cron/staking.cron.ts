@@ -29,7 +29,7 @@ export const stakingCron = new CronJob("*/10 * * * *", async () => {
           stakedWallets.push({
             stakedAmount: len.length,
             wallet: w,
-            nftIds: len.map((l: any) => Number(l[0])),
+            nftIds: len.map((l: any) => Number(l[1])),
           });
 
         return len;
