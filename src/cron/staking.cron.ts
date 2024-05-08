@@ -15,13 +15,22 @@ export const stakingCron = new CronJob("*/10 * * * *", async () => {
 
     const wallets = (await User.find().select("wallet")).map((u) => u.wallet);
 
-    const stakedWallets: { wallet: string; stakedAmount: number }[] = [];
+    const stakedWallets: {
+      wallet: string;
+      stakedAmount: number;
+      nftIds: number[];
+    }[] = [];
 
     const staked = await Promise.all(
       wallets.map(async (w) => {
         const stakedNfts = await gamubllsContract.getStakedNfts(w);
-        const len = stakedNfts.filter((s: any) => s[2]).length;
-        if (len > 0) stakedWallets.push({ stakedAmount: len, wallet: w });
+        const len = stakedNfts.filter((s: any) => s[2]);
+        if (len > 0)
+          stakedWallets.push({
+            stakedAmount: len.length,
+            wallet: w,
+            nftIds: len.map((l: any) => Number(l[0])),
+          });
 
         return len;
       })
