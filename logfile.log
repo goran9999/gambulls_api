@@ -309,3 +309,9 @@ info: Stored staking info! {"timestamp":"2024-05-08T10:37:02.278Z"}
 info: Cron execution... {"timestamp":"2024-05-08T10:38:00.004Z"}
 info: Cron found 3052 staked nfts! {"timestamp":"2024-05-08T10:38:01.586Z"}
 info: Stored staking info! {"timestamp":"2024-05-08T10:38:02.270Z"}
+info: Cron execution... {"timestamp":"2024-05-13T18:20:00.032Z"}
+info: Cron found 3081 staked nfts! {"timestamp":"2024-05-13T18:20:02.091Z"}
+info: Stored staking info! {"timestamp":"2024-05-13T18:20:02.708Z"}
+info: Cron execution... {"timestamp":"2024-05-13T18:30:00.010Z"}
+info: Cron found 3081 staked nfts! {"timestamp":"2024-05-13T18:30:03.073Z"}
+info: Stored staking info! {"timestamp":"2024-05-13T18:30:03.688Z"}

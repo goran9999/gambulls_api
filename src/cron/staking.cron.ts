@@ -4,6 +4,7 @@ import { gamubllsContract } from "../utils";
 import { createClient } from "redis";
 import { config } from "dotenv";
 import logger from "../logger";
+import { Alchemy, Network } from "alchemy-sdk";
 
 config();
 export const stakingCron = new CronJob("*/10 * * * *", async () => {
@@ -21,17 +22,43 @@ export const stakingCron = new CronJob("*/10 * * * *", async () => {
       nftIds: number[];
     }[] = [];
 
+    const alchemy = new Alchemy({
+      network:
+        process.env.CHAIN_ENV === "development"
+          ? Network.ETH_SEPOLIA
+          : Network.ETH_MAINNET,
+      apiKey: process.env.ALCHEMY_KEY,
+    });
+
     const staked = await Promise.all(
       wallets.map(async (w) => {
         const stakedNfts = await gamubllsContract.getStakedNfts(w);
 
         const len = stakedNfts.filter((s: any) => s[2]);
-        if (len.length > 0)
-          stakedWallets.push({
-            stakedAmount: len.length,
-            wallet: w,
-            nftIds: len.map((l: any) => Number(l[1])),
-          });
+        const tokenIds: number[] = [];
+
+        const images: string[] = [];
+
+        await Promise.all(
+          len.map(async (l: any) => {
+            if (len.length > 0) {
+              const nft = await alchemy.nft.getNftMetadata(
+                gamubllsContract.target.toString(),
+                l[1]
+              );
+
+              if (!images.some((s) => s === nft.image.originalUrl)) {
+                images.push(nft.image.originalUrl!);
+                tokenIds.push(Number(l[1]));
+              }
+            }
+          })
+        );
+        stakedWallets.push({
+          stakedAmount: images.length,
+          wallet: w,
+          nftIds: tokenIds,
+        });
 
         return len.length;
       })
