@@ -30,41 +30,39 @@ export const stakingCron = new CronJob("*/10 * * * *", async () => {
       apiKey: process.env.ALCHEMY_KEY,
     });
 
-    const staked = await Promise.all(
-      wallets.map(async (w) => {
-        const stakedNfts = await gamubllsContract.getStakedNfts(w);
+    let totalStaked = 0;
+    for (const w of wallets) {
+      const stakedNfts = await gamubllsContract.getStakedNfts(w);
 
-        const len = stakedNfts.filter((s: any) => s[2]);
-        const tokenIds: number[] = [];
+      const len = stakedNfts.filter((s: any) => s[2]);
 
-        const images: string[] = [];
+      const tokenIds: number[] = [];
 
-        await Promise.all(
-          len.map(async (l: any) => {
-            if (len.length > 0) {
-              const nft = await alchemy.nft.getNftMetadata(
-                gamubllsContract.target.toString(),
-                l[1]
-              );
+      const images: string[] = [];
 
-              if (!images.some((s) => s === nft.image.originalUrl)) {
-                images.push(nft.image.originalUrl!);
-                tokenIds.push(Number(l[1]));
-              }
-            }
-          })
-        );
-        stakedWallets.push({
-          stakedAmount: images.length,
-          wallet: w,
-          nftIds: tokenIds,
-        });
+      const nfts = await alchemy.nft.getNftMetadataBatch(
+        len.map((l: any) => ({
+          contractAddress: gamubllsContract.target,
+          tokenId: Number(l[1]),
+        }))
+      );
 
-        return len.length;
-      })
-    );
+      for (const nft of nfts.nfts) {
+        if (!images.some((s) => s === nft.image.originalUrl)) {
+          images.push(nft.image.originalUrl!);
+          tokenIds.push(Number(nft.tokenId));
+        }
+      }
+      stakedWallets.push({
+        stakedAmount: images.length,
+        wallet: w,
+        nftIds: tokenIds,
+      });
 
-    const totalStaked = staked.reduce((acc, val) => acc + val, 0);
+      totalStaked += images.length;
+      console.log(`Fetched info for ${w}`);
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+    }
 
     logger.info(`Cron found ${totalStaked} staked nfts!`);
 

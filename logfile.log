@@ -315,3 +315,185 @@ info: Stored staking info! {"timestamp":"2024-05-13T18:20:02.708Z"}
 info: Cron execution... {"timestamp":"2024-05-13T18:30:00.010Z"}
 info: Cron found 3081 staked nfts! {"timestamp":"2024-05-13T18:30:03.073Z"}
 info: Stored staking info! {"timestamp":"2024-05-13T18:30:03.688Z"}
+info: Cron execution... {"timestamp":"2024-05-14T12:50:00.016Z"}
+error: Cron failed: 403: <!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en-US"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en-US"> <!--<![endif]-->
+<head>
+<title>Attention Required! | Cloudflare</title>
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<meta name="robots" content="noindex, nofollow" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="stylesheet" id="cf_styles-css" href="/cdn-cgi/styles/cf.errors.css" />
+<!--[if lt IE 9]><link rel="stylesheet" id='cf_styles-ie-css' href="/cdn-cgi/styles/cf.errors.ie.css" /><![endif]-->
+<style>body{margin:0;padding:0}</style>
+
+
+<!--[if gte IE 10]><!-->
+<script>
+  if (!navigator.cookieEnabled) {
+    window.addEventListener('DOMContentLoaded', function () {
+      var cookieEl = document.getElementById('cookie-alert');
+      cookieEl.style.display = 'block';
+    })
+  }
+</script>
+<!--<![endif]-->
+
+
+</head>
+<body>
+  <div id="cf-wrapper">
+    <div class="cf-alert cf-alert-error cf-cookie-error" id="cookie-alert" data-translate="enable_cookies">Please enable cookies.</div>
+    <div id="cf-error-details" class="cf-error-details-wrapper">
+      <div class="cf-wrapper cf-header cf-error-overview">
+        <h1 data-translate="block_headline">Sorry, you have been blocked</h1>
+        <h2 class="cf-subheadline"><span data-translate="unable_to_access">You are unable to access</span> g.alchemy.com</h2>
+      </div><!-- /.header -->
+
+      <div class="cf-section cf-highlight">
+        <div class="cf-wrapper">
+          <div class="cf-screenshot-container cf-screenshot-full">
+            
+              <span class="cf-no-screenshot error"></span>
+            
+          </div>
+        </div>
+      </div><!-- /.captcha-container -->
+
+      <div class="cf-section cf-wrapper">
+        <div class="cf-columns two">
+          <div class="cf-column">
+            <h2 data-translate="blocked_why_headline">Why have I been blocked?</h2>
+
+            <p data-translate="blocked_why_detail">This website is using a security service to protect itself from online attacks. The action you just performed triggered the security solution. There are several actions that could trigger this block including submitting a certain word or phrase, a SQL command or malformed data.</p>
+          </div>
+
+          <div class="cf-column">
+            <h2 data-translate="blocked_resolve_headline">What can I do to resolve this?</h2>
+
+            <p data-translate="blocked_resolve_detail">You can email the site owner to let them know you were blocked. Please include what you were doing when this page came up and the Cloudflare Ray ID found at the bottom of this page.</p>
+          </div>
+        </div>
+      </div><!-- /.section -->
+
+      <div class="cf-error-footer cf-wrapper w-240 lg:w-full py-10 sm:py-4 sm:px-8 mx-auto text-center sm:text-left border-solid border-0 border-t border-gray-300">
+  <p class="text-13">
+    <span class="cf-footer-item sm:block sm:mb-1">Cloudflare Ray ID: <strong class="font-semibold">883b0364ede6286e</strong></span>
+    <span class="cf-footer-separator sm:hidden">&bull;</span>
+    <span id="cf-footer-item-ip" class="cf-footer-item hidden sm:block sm:mb-1">
+      Your IP:
+      <button type="button" id="cf-footer-ip-reveal" class="cf-footer-ip-reveal-btn">Click to reveal</button>
+      <span class="hidden" id="cf-footer-ip">217.26.78.202</span>
+      <span class="cf-footer-separator sm:hidden">&bull;</span>
+    </span>
+    <span class="cf-footer-item sm:block sm:mb-1"><span>Performance &amp; security by</span> <a rel="noopener noreferrer" href="https://www.cloudflare.com/5xx-error-landing" id="brand_link" target="_blank">Cloudflare</a></span>
+    
+  </p>
+  <script>(function(){function d(){var b=a.getElementById("cf-footer-item-ip"),c=a.getElementById("cf-footer-ip-reveal");b&&"classList"in b&&(b.classList.remove("hidden"),c.addEventListener("click",function(){c.classList.add("hidden");a.getElementById("cf-footer-ip").classList.remove("hidden")}))}var a=document;document.addEventListener&&a.addEventListener("DOMContentLoaded",d)})();</script>
+</div><!-- /.error-footer -->
+
+
+    </div><!-- /#cf-error-details -->
+  </div><!-- /#cf-wrapper -->
+
+  <script>
+  window._cf_translation = {};
+  
+  
+</script>
+
+</body>
+</html>
+ {"timestamp":"2024-05-14T12:50:11.438Z"}
+info: Cron execution... {"timestamp":"2024-05-14T13:00:00.033Z"}
+error: Cron failed: Do not know how to serialize a BigInt {"timestamp":"2024-05-14T13:00:01.866Z"}
+info: Cron execution... {"timestamp":"2024-05-14T13:20:00.064Z"}
+error: Cron failed: Do not know how to serialize a BigInt {"timestamp":"2024-05-14T13:20:01.536Z"}
+info: Cron execution... {"timestamp":"2024-05-14T13:30:00.030Z"}
+error: Cron failed: Do not know how to serialize a BigInt {"timestamp":"2024-05-14T13:30:01.298Z"}
+info: Cron execution... {"timestamp":"2024-05-14T13:40:00.029Z"}
+error: Cron failed: Do not know how to serialize a BigInt {"timestamp":"2024-05-14T13:40:01.316Z"}
+info: Cron execution... {"timestamp":"2024-05-14T13:50:00.072Z"}
+error: Cron failed: Do not know how to serialize a BigInt {"timestamp":"2024-05-14T13:50:01.847Z"}
+info: Cron execution... {"timestamp":"2024-05-14T14:00:00.027Z"}
+error: Cron failed: Do not know how to serialize a BigInt {"timestamp":"2024-05-14T14:00:01.343Z"}
+info: Cron execution... {"timestamp":"2024-05-14T14:10:00.173Z"}
+error: Cron failed: Do not know how to serialize a BigInt {"timestamp":"2024-05-14T14:10:01.767Z"}
+info: Cron execution... {"timestamp":"2024-05-14T14:20:00.019Z"}
+error: Cron failed: Do not know how to serialize a BigInt {"timestamp":"2024-05-14T14:20:02.328Z"}
+info: Cron execution... {"timestamp":"2024-05-14T14:30:00.017Z"}
+error: Cron failed: Do not know how to serialize a BigInt {"timestamp":"2024-05-14T14:30:01.895Z"}
+info: Cron execution... {"timestamp":"2024-05-14T14:40:00.052Z"}
+error: Cron failed: Do not know how to serialize a BigInt {"timestamp":"2024-05-14T14:40:01.471Z"}
+info: Cron execution... {"timestamp":"2024-05-14T14:50:00.033Z"}
+error: Cron failed: Do not know how to serialize a BigInt {"timestamp":"2024-05-14T14:50:01.251Z"}
+info: Cron execution... {"timestamp":"2024-05-14T15:00:00.025Z"}
+error: Cron failed: Do not know how to serialize a BigInt {"timestamp":"2024-05-14T15:00:01.268Z"}
+info: Cron execution... {"timestamp":"2024-05-14T15:10:00.007Z"}
+error: Cron failed: Do not know how to serialize a BigInt {"timestamp":"2024-05-14T15:10:01.163Z"}
+info: Cron execution... {"timestamp":"2024-05-14T15:20:00.004Z"}
+error: Cron failed: Do not know how to serialize a BigInt {"timestamp":"2024-05-14T15:20:01.207Z"}
+info: Cron execution... {"timestamp":"2024-05-28T22:45:10.002Z"}
+info: Cron execution... {"timestamp":"2024-05-28T22:45:11.002Z"}
+error: Cron failed: Do not know how to serialize a BigInt {"timestamp":"2024-05-28T22:45:11.777Z"}
+error: Cron failed: Do not know how to serialize a BigInt {"timestamp":"2024-05-28T22:45:11.858Z"}
+info: Cron execution... {"timestamp":"2024-05-28T22:45:12.000Z"}
+error: Cron failed: Do not know how to serialize a BigInt {"timestamp":"2024-05-28T22:45:12.984Z"}
+info: Cron execution... {"timestamp":"2024-05-28T22:45:13.003Z"}
+info: Cron execution... {"timestamp":"2024-05-28T22:45:14.002Z"}
+info: Cron execution... {"timestamp":"2024-05-28T22:45:15.001Z"}
+info: Cron execution... {"timestamp":"2024-05-28T22:45:16.002Z"}
+error: Cron failed: Do not know how to serialize a BigInt {"timestamp":"2024-05-28T22:45:16.562Z"}
+error: Cron failed: Do not know how to serialize a BigInt {"timestamp":"2024-05-28T22:45:16.562Z"}
+error: Cron failed: Do not know how to serialize a BigInt {"timestamp":"2024-05-28T22:45:16.957Z"}
+info: Cron execution... {"timestamp":"2024-05-28T22:45:17.002Z"}
+info: Cron execution... {"timestamp":"2024-05-28T22:45:42.002Z"}
+info: Cron execution... {"timestamp":"2024-05-28T22:45:43.001Z"}
+error: Cron failed: Do not know how to serialize a BigInt {"timestamp":"2024-05-28T22:45:43.748Z"}
+error: Cron failed: Do not know how to serialize a BigInt {"timestamp":"2024-05-28T22:45:43.945Z"}
+info: Cron execution... {"timestamp":"2024-05-28T22:45:44.002Z"}
+info: Cron execution... {"timestamp":"2024-05-28T22:45:45.001Z"}
+info: Cron execution... {"timestamp":"2024-05-28T22:46:29.002Z"}
+error: Cron failed: Do not know how to serialize a BigInt {"timestamp":"2024-05-28T22:46:30.004Z"}
+info: Cron execution... {"timestamp":"2024-05-28T22:46:30.005Z"}
+info: Cron execution... {"timestamp":"2024-05-28T22:46:31.004Z"}
+error: Cron failed: Do not know how to serialize a BigInt {"timestamp":"2024-05-28T22:46:31.669Z"}
+info: Cron execution... {"timestamp":"2024-05-28T22:46:32.001Z"}
+info: Cron execution... {"timestamp":"2024-05-28T22:46:33.001Z"}
+error: Cron failed: Do not know how to serialize a BigInt {"timestamp":"2024-05-28T22:46:33.240Z"}
+error: Cron failed: Do not know how to serialize a BigInt {"timestamp":"2024-05-28T22:46:33.240Z"}
+error: Cron failed: Do not know how to serialize a BigInt {"timestamp":"2024-05-28T22:46:33.905Z"}
+info: Cron execution... {"timestamp":"2024-05-28T22:46:34.002Z"}
+info: Cron execution... {"timestamp":"2024-05-28T22:46:50.002Z"}
+info: Cron execution... {"timestamp":"2024-05-28T22:46:51.001Z"}
+error: Cron failed: Do not know how to serialize a BigInt {"timestamp":"2024-05-28T22:46:51.443Z"}
+info: Cron execution... {"timestamp":"2024-05-28T22:46:52.001Z"}
+info: Cron execution... {"timestamp":"2024-05-28T22:46:53.001Z"}
+info: Cron execution... {"timestamp":"2024-05-28T22:46:54.001Z"}
+info: Cron execution... {"timestamp":"2024-05-28T22:46:55.001Z"}
+error: Cron failed: Do not know how to serialize a BigInt {"timestamp":"2024-05-28T22:46:55.022Z"}
+error: Cron failed: Do not know how to serialize a BigInt {"timestamp":"2024-05-28T22:46:55.022Z"}
+error: Cron failed: Do not know how to serialize a BigInt {"timestamp":"2024-05-28T22:46:55.023Z"}
+error: Cron failed: Do not know how to serialize a BigInt {"timestamp":"2024-05-28T22:46:55.023Z"}
+info: Cron execution... {"timestamp":"2024-05-28T22:47:12.002Z"}
+info: Cron execution... {"timestamp":"2024-05-28T22:47:13.001Z"}
+info: Cron execution... {"timestamp":"2024-05-28T22:47:14.001Z"}
+info: Cron execution... {"timestamp":"2024-05-28T22:47:15.002Z"}
+error: Cron failed: Do not know how to serialize a BigInt {"timestamp":"2024-05-28T22:47:15.503Z"}
+error: Cron failed: Do not know how to serialize a BigInt {"timestamp":"2024-05-28T22:47:15.505Z"}
+error: Cron failed: Do not know how to serialize a BigInt {"timestamp":"2024-05-28T22:47:15.506Z"}
+error: Cron failed: Do not know how to serialize a BigInt {"timestamp":"2024-05-28T22:47:15.918Z"}
+info: Cron execution... {"timestamp":"2024-05-28T22:47:16.001Z"}
+info: Cron execution... {"timestamp":"2024-05-28T22:47:46.002Z"}
+info: Cron execution... {"timestamp":"2024-05-28T22:47:47.002Z"}
+info: Cron execution... {"timestamp":"2024-05-28T22:47:48.001Z"}
+info: Cron execution... {"timestamp":"2024-05-28T22:47:49.001Z"}
+info: Cron execution... {"timestamp":"2024-05-28T22:48:09.001Z"}
+info: Cron execution... {"timestamp":"2024-05-28T22:48:10.001Z"}
+info: Cron execution... {"timestamp":"2024-05-28T22:48:11.001Z"}
+info: Cron execution... {"timestamp":"2024-05-28T22:48:12.001Z"}
