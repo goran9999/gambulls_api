@@ -22,14 +22,6 @@ export const stakingCron = new CronJob("*/10 * * * *", async () => {
       nftIds: number[];
     }[] = [];
 
-    const alchemy = new Alchemy({
-      network:
-        process.env.CHAIN_ENV === "development"
-          ? Network.ETH_SEPOLIA
-          : Network.ETH_MAINNET,
-      apiKey: process.env.ALCHEMY_KEY,
-    });
-
     let totalStaked = 0;
     for (const w of wallets) {
       const stakedNfts = await gamubllsContract.getStakedNfts(w);
@@ -40,19 +32,28 @@ export const stakingCron = new CronJob("*/10 * * * *", async () => {
 
       const images: string[] = [];
 
-      const nfts = await alchemy.nft.getNftMetadataBatch(
-        len.map((l: any) => ({
-          contractAddress: gamubllsContract.target,
-          tokenId: Number(l[1]),
-        }))
-      );
-
-      for (const nft of nfts.nfts) {
-        if (!images.some((s) => s === nft.image.originalUrl)) {
-          images.push(nft.image.originalUrl!);
-          tokenIds.push(Number(nft.tokenId));
+      for (const l of len) {
+        const uri = await gamubllsContract.tokenURI(l[1]);
+        console.log(uri);
+        if (!images.find((i) => i === uri)) {
+          images.push(uri);
+          tokenIds.push(Number(l[1]));
         }
       }
+
+      // const nfts = await alchemy.nft.getNftMetadataBatch(
+      //   len.map((l: any) => ({
+      //     contractAddress: gamubllsContract.target,
+      //     tokenId: Number(l[1]),
+      //   }))
+      // );
+
+      // for (const nft of nfts.nfts) {
+      //   if (!images.some((s) => s === nft.image.originalUrl)) {
+      //     images.push(nft.image.originalUrl!);
+      //     tokenIds.push(Number(nft.tokenId));
+      //   }
+      // }
       stakedWallets.push({
         stakedAmount: images.length,
         wallet: w,
