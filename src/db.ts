@@ -43,11 +43,25 @@ export const TransferNfts = mongoose.model<ITransfer>(
 export const UserSchema = new mongoose.Schema({
   wallet: String,
   createdAt: Date,
+  displayName: String,
+  username: String,
+  usdcSolWallet: String,
+  bio: String,
+  emailAddress: String,
+  imageUrl: String,
+  banner: String,
 });
 
 export interface IUser {
   wallet: string;
   createdAt: Date;
+  displayName: string;
+  username: String;
+  usdcSolWallet: string;
+  bio: String;
+  emailAddress: string;
+  imageUrl: string;
+  banner: string;
 }
 
 export const User = mongoose.model<IUser>("user", UserSchema);

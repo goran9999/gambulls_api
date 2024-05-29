@@ -7,7 +7,7 @@ import logger from "../logger";
 import { Alchemy, Network } from "alchemy-sdk";
 
 config();
-export const stakingCron = new CronJob("*/10 * * * *", async () => {
+export const stakingCron = new CronJob("0 * * * *", async () => {
   try {
     logger.info(`Cron execution...`);
     const client = await createClient({
