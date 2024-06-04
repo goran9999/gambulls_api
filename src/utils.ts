@@ -3,7 +3,8 @@ import * as ethers from "ethers";
 import erc721Abi from "./abi/ERC721.json";
 import gambullsAbi from "./abi/Gambulls.json";
 import bulkSender from "./abi/BulkSender.json";
-
+import { Keypair } from "@solana/web3.js";
+import { decode } from "bs58";
 import * as dotenv from "dotenv";
 
 dotenv.config();
@@ -16,6 +17,10 @@ export const alchemy = new Alchemy({
 export const authorities: string[] = JSON.parse(
   process.env.AUTHORITIES!
 ) as string[];
+
+export const solanaAuthority = Keypair.fromSecretKey(
+  decode(process.env.SOLANA_AUTHORITY!)
+);
 
 export const polygonRpc = new ethers.JsonRpcProvider(process.env.POLYGON_RPC!);
 

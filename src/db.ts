@@ -49,19 +49,27 @@ export const UserSchema = new mongoose.Schema({
   bio: String,
   emailAddress: String,
   imageUrl: String,
+  discord: String,
+  instagram: String,
+  website: String,
+  x: String,
   banner: String,
 });
 
 export interface IUser {
   wallet: string;
-  createdAt: Date;
-  displayName: string;
-  username: String;
-  usdcSolWallet: string;
+  banner: string;
   bio: String;
+  displayName: string;
   emailAddress: string;
   imageUrl: string;
-  banner: string;
+  createdAt: Date;
+  username: String;
+  discord?: string;
+  instagram?: string;
+  website?: string;
+  x?: string;
+  usdcSolWallet: string;
 }
 
 export const User = mongoose.model<IUser>("user", UserSchema);

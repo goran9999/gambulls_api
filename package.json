@@ -14,9 +14,13 @@
   "dependencies": {
     "@openzeppelin/contracts": "^5.0.1",
     "@prisma/client": "^5.9.1",
+    "@project-serum/anchor": "^0.26.0",
+    "@shadow-drive/sdk": "^5.0.0",
+    "@solana/web3.js": "^1.91.8",
     "alchemy-sdk": "^3.1.2",
     "axios": "^1.6.7",
     "body-parser": "^1.20.2",
+    "bs58": "^5.0.0",
     "cheerio": "^1.0.0-rc.12",
     "cors": "^2.8.5",
     "cron": "^3.1.7",
