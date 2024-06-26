@@ -34,7 +34,7 @@ export const stakingCron = new CronJob("0 * * * *", async () => {
 
       for (const l of len) {
         const uri = await gamubllsContract.tokenURI(l[1]);
-        console.log(uri);
+
         if (!images.find((i) => i === uri)) {
           images.push(uri);
           tokenIds.push(Number(l[1]));
