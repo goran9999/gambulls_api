@@ -1,8 +1,6 @@
 import { Request, Response } from "express";
-import { Status } from "prisma/prisma-client";
 import z from "zod";
 import { TransactionStatus, TransferNfts } from "../db";
-import mongoose from "mongoose";
 import {
   alchemy,
   bulkSenderContract,
@@ -16,7 +14,6 @@ import {
   polygonRpc,
 } from "../utils";
 import { ethers } from "ethers";
-import axios from "axios";
 import { Alchemy, Network } from "alchemy-sdk";
 import logger from "../logger";
 import { Authority } from "./authorities";

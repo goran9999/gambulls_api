@@ -1,4 +1,4 @@
-import { alchemy, ethRpc, gamubllsContract } from "../utils";
+import { ethRpc, gamubllsContract } from "../utils";
 import { Request, Response } from "express";
 import axios from "axios";
 import { ethers } from "ethers";
@@ -6,46 +6,56 @@ import { Alchemy, Network } from "alchemy-sdk";
 import { User } from "../db";
 import { createClient } from "redis";
 
+const alchemy = new Alchemy({
+  network:
+    process.env.CHAIN_ENV === "development"
+      ? Network.ETH_SEPOLIA
+      : Network.ETH_MAINNET,
+  apiKey: process.env.ALCHEMY_KEY,
+});
+
+// Utility function to split an array into chunks
+function chunkArray(array: any[], chunkSize: number) {
+  const chunks = [];
+  for (let i = 0; i < array.length; i += chunkSize) {
+    chunks.push(array.slice(i, i + chunkSize));
+  }
+  return chunks;
+}
+
 export async function getWalletStakedNfts(req: Request, res: Response) {
   try {
     const { wallet } = req.params;
     if (!wallet) {
       return res.status(400).json({ message: "Missing wallet!" });
     }
+
     const walletStakedNfts = (
       await gamubllsContract.getStakedNfts(wallet)
     ).filter((w: any) => w[2]);
 
     await createUserIfNotExists(wallet);
 
-    const alchemy = new Alchemy({
-      network:
-        process.env.CHAIN_ENV === "development"
-          ? Network.ETH_SEPOLIA
-          : Network.ETH_MAINNET,
-      apiKey: process.env.ALCHEMY_KEY,
-    });
+    const tokens = walletStakedNfts.map((wns: any) => ({
+      contractAddress: gamubllsContract.target.toString(),
+      tokenId: wns[1].toString(),
+      tokenType: "ERC721", // Assuming the tokens are ERC721; adjust as needed
+    }));
 
+    // Split tokens into chunks of 100
+    const tokenChunks = chunkArray(tokens, 100);
     const nfts: any[] = [];
 
-    for (const wns of walletStakedNfts) {
-      try {
-        const nft = await alchemy.nft.getNftMetadata(
-          gamubllsContract.target.toString(),
-          wns[1]
-        );
-
-        if (!nfts.find((n) => n.image == nft.image.originalUrl)) {
-          nfts.push({
-            id: Number(wns[1]),
-            staked: true,
-            image: nft.image.originalUrl,
-            mint: wns[1].toString(),
-          });
-        }
-      } catch (error) {
-        console.log(error);
-      }
+    for (const chunk of tokenChunks) {
+      const nftsBatchResponse = await alchemy.nft.getNftMetadataBatch(chunk);
+      nfts.push(
+        ...nftsBatchResponse.nfts.map((nft, index) => ({
+          id: Number(chunk[index].tokenId),
+          staked: true,
+          image: nft.image.originalUrl, // Adjust according to Alchemy's response format
+          mint: chunk[index].tokenId,
+        }))
+      );
     }
 
     return res.status(200).json({ message: "Success", stakedNfts: nfts });
