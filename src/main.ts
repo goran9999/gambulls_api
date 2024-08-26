@@ -23,6 +23,6 @@ app.use("/staking", StakingRouter);
 app.use("/user", UserRouter);
 
 app.listen(3009, "0.0.0.0", () => {
-  stakingCron.start();
+  // stakingCron.start();
   console.log("Listening on port 3009...");
 });
